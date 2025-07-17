@@ -18,7 +18,7 @@ public class MenuRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("--- Saving Data ---");
+        System.out.println("--- Data ---");
 
         // TOPPINGS
         Topping tomato = new Topping("Tomato Sauce", 0, 0.00);
@@ -61,6 +61,41 @@ public class MenuRunner implements CommandLineRunner {
         // method to find and update an Item by ID
         // menuItemService.findMenuItemByIdAndUpdate(10, new Pizza("Pizza Salami", 1160, 5.99, List.of(salamiFromDb)));
 
-        // DRINKS
+
+        // FIND ALL
+        /*menuItemService.findAll().forEach(item ->
+                System.out.println("ID: " + item.getId() + ", Name: " + item.getName() + ", Calories: " + item.getCalories() + ", Price: " + item.getPrice())
+        );*/
+
+        // FIND BY NAME
+       /* System.out.println("--- FIND BY NAME ---");
+        String searchName = "Pizza Salami";
+        System.out.println("Search all items with name: " + searchName);
+
+        List<MenuItem> foundItems = menuItemService.findMenuItemsByName(searchName);
+
+        if (foundItems.isEmpty()) {
+            System.out.println("No item found with this name.");
+        } else {
+            System.out.println("Found items:");
+            foundItems.forEach(item ->
+                    System.out.println("- ID: " + item.getId() + ", Name: " + item.getName() + ", Calories: " + item.getCalories() + ", Price: " + item.getPrice())
+            );
+        }*/
+
+        // FIND BY CALORIES GREATER THAN
+        /*System.out.println("--- FIND BY CALORIES GREATER THAN ---");
+        int caloriesLimit = 1100;
+        System.out.println("Searching all items with more than " + caloriesLimit + " calories.");
+
+        List<MenuItem> foundItems = menuItemService.findItemsWithMoreCaloriesThan(caloriesLimit);
+
+        if (foundItems.isEmpty()) {
+            System.out.println("No item found with these calories.");
+        } else {
+            System.out.println("Found items:");
+            foundItems.forEach(item ->
+                    System.out.println("- ID: " + item.getId() + ", Name: " + item.getName() + ", Calories: " + item.getCalories() + ", Price: " + item.getPrice()));
+        }*/
     }
 }

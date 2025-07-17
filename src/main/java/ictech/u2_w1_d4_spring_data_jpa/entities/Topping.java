@@ -4,6 +4,7 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @DiscriminatorValue("Topping")
+@ToString(callSuper = true, exclude = "pizzas")
 public class Topping extends MenuItem {
 
     @ManyToMany(mappedBy = "toppings")
@@ -18,10 +20,5 @@ public class Topping extends MenuItem {
 
     public Topping(String name, int calories, double price) {
         super(name, calories, price);
-    }
-
-    @Override
-    public String toString() {
-        return "Topping{} " + super.toString();
     }
 }

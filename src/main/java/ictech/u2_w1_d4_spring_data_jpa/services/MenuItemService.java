@@ -49,4 +49,14 @@ public class MenuItemService {
     public List<MenuItem> findAll() {
         return menuItemRepository.findAll();
     }
+
+    // Using derived queries from repository
+    public List<MenuItem> findMenuItemsByName(String name) {
+        return menuItemRepository.findByName(name);
+    }
+
+    public List<MenuItem> findItemsWithMoreCaloriesThan(int cal) {
+        return menuItemRepository.findByCaloriesGreaterThan(cal);
+    }
+
 }

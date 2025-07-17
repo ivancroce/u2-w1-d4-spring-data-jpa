@@ -25,7 +25,7 @@ public class Pizza extends MenuItem {
     public Pizza(String name, int calories, double price) {
         super(name, calories, price);
     }
-    
+
     public Pizza(String name, int calories, double price, List<Topping> toppings) {
         super(name, calories, price);
         this.toppings = toppings;
