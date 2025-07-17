@@ -1,5 +1,6 @@
 package ictech.u2_w1_d4_spring_data_jpa.runners;
 
+import ictech.u2_w1_d4_spring_data_jpa.entities.Drink;
 import ictech.u2_w1_d4_spring_data_jpa.entities.Pizza;
 import ictech.u2_w1_d4_spring_data_jpa.entities.Topping;
 import ictech.u2_w1_d4_spring_data_jpa.services.MenuItemService;
@@ -36,13 +37,30 @@ public class MenuRunner implements CommandLineRunner {
         // Toppings from db
         Topping tomatoFromDb = (Topping) menuItemService.findMenuItemById(1);
         Topping cheeseFromDb = (Topping) menuItemService.findMenuItemById(2);
+        Topping hamFromDb = (Topping) menuItemService.findMenuItemById(3);
+        Topping onionsFromDb = (Topping) menuItemService.findMenuItemById(4);
+        Topping forbiddenWordFromDb = (Topping) menuItemService.findMenuItemById(5);
+        Topping salamiFromDb = (Topping) menuItemService.findMenuItemById(6);
 
         // PIZZAS
-        Pizza margherita = new Pizza("Pizza Margherita", 1104, 4.99, List.of(tomatoFromDb, cheeseFromDb));
-        // menuItemService.saveMenuItem(margherita);
+        Pizza margheritaPizza = new Pizza("Pizza Margherita", 1104, 4.99, List.of(tomatoFromDb, cheeseFromDb));
+        Pizza hawaiianPizza = new Pizza("Pizza Hawaiian", 1024, 6.49, List.of(hamFromDb, forbiddenWordFromDb));
+        Pizza salamiPizza = new Pizza("Pizza Salami", 1160, 5.99, List.of(salamiFromDb));
+        // menuItemService.saveMenuItem(margheritaPizza);
+        /*menuItemService.saveMenuItem(hawaiianPizza);
+        menuItemService.saveMenuItem(salamiPizza);*/
 
-        //to continue
-        
+        // DRINKS
+        Drink drinkLemonade = new Drink("Lemonade (0.33l)", 128, 1.29);
+        Drink drinkWater = new Drink("Water (0.5l)", 0, 1.29);
+        Drink drinkWine = new Drink("Wine (0.75l, 13%)", 607, 7.49);
+        /*menuItemService.saveMenuItem(drinkLemonade);
+        menuItemService.saveMenuItem(drinkWater);
+        menuItemService.saveMenuItem(drinkWine);*/
+
+        // method to find and update an Item by ID
+        // menuItemService.findMenuItemByIdAndUpdate(10, new Pizza("Pizza Salami", 1160, 5.99, List.of(salamiFromDb)));
+
         // DRINKS
     }
 }

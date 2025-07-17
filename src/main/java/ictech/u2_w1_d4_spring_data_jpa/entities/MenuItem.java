@@ -18,10 +18,10 @@ public abstract class MenuItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
-    private long id;
-    private String name;
-    private int calories;
-    private double price;
+    protected long id;
+    protected String name;
+    protected int calories;
+    protected double price;
 
     public MenuItem(String name, int calories, double price) {
 

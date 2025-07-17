@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class MenuItemService {
@@ -16,14 +18,35 @@ public class MenuItemService {
     public void saveMenuItem(MenuItem item) {
         menuItemRepository.save(item);
 
-        log.info("The item '" + item.getName() + "' it was saved successfully in the DB.");
+        log.info("The item '" + item.getName() + "' was saved successfully in the DB.");
     }
 
     public MenuItem findMenuItemById(long id) {
 		/*Optional<User> foundOrNot = usersRepository.findById(userId);
 		if (foundOrNot.isPresent()) return foundOrNot.get();
 		else throw new NotFoundException(userId);*/
-        return menuItemRepository.findById(id).orElseThrow(() -> new NotFoundException(id)); // Alternativa più compatta al codice di sopra
+        return menuItemRepository.findById(id).orElseThrow(() -> new NotFoundException(id)); // alternative
     }
-    
+
+    public void findMenuItemByIdAndUpdate(long id, MenuItem updatedMenuItem) {
+        MenuItem found = this.findMenuItemById(id);
+
+        found.setName(updatedMenuItem.getName());
+        found.setCalories(updatedMenuItem.getCalories());
+        found.setPrice(updatedMenuItem.getPrice());
+
+        menuItemRepository.save(found);
+        log.info("The item with ID'" + id + "' was updated successfully in the DB.");
+    }
+
+    public void findMenuItemByIdAndDelete(long id) {
+        MenuItem found = this.findMenuItemById(id);
+
+        menuItemRepository.delete(found);
+        log.info("The item with ID'" + id + "' was deleted successfully in the DB.");
+    }
+
+    public List<MenuItem> findAll() {
+        return menuItemRepository.findAll();
+    }
 }
